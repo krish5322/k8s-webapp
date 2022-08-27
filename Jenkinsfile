@@ -16,12 +16,14 @@ pipeline {
                                 sh '''
                                 docker build -t bill3213/springapp:${VERSION} .
                                 docker rmi bill3213/springapp:${VERSION}
-                            }    '''
+                                '''
+                            }
                             dir('server/') {
                                 sh '''
                                 docker build -t bill3213/springapp:${VERSION} .
                                 docker rmi bill3213/springapp:${VERSION}
-                            }    '''
+                                '''
+                            }
                         }
                     }
                 }
