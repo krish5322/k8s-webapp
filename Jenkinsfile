@@ -31,6 +31,7 @@ pipeline {
         stage('Deploying application on k8s cluster') {
             steps {
                 dir('k8s/') {
+                    sh 'kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml'
                     sh 'kubectl apply -f .'
                 }
             }
