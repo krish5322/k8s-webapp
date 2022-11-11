@@ -1,15 +1,14 @@
 pipeline {
-    agent any
+    agent {
+        label 'azure'
+    }
     environment{
         VERSION = "${env.BUILD_ID}"
     }
     stages{
 
         stage("docker build & docker push"){
-            agent {
-                label 'azure'
-            }
-                steps{     
+            steps{     
                     script{
                         withCredentials([string(credentialsId: 'docker_secret', variable: 'docker_secret')]) {
                             dir('client/') {
